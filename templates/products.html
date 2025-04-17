@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RetailAI - Products</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="sidebar">
+    <h2>📊 RetailAI</h2>
+    <ul>
+      <li><a href="/">Dashboard</a></li>
+      <li class="active"><a href="/products">Products</a></li>
+    
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <header>
+      <h1>📦 Product Sales Data</h1>
+    </header>
+
+    <div class="card">
+      <h3>📤 Upload CSV to View Products</h3>
+      <input type="file" id="csvFileInput" accept=".csv" />
+      <button id="viewBtn" style="margin-top: 10px;">View Products</button>
+      <div id="tableContainer" class="table-box"></div>
+    </div>
+    
+  </div>
+
+  <script src="/static/products.js"></script>
+</body>
+</html>

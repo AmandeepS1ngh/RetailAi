@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Retail Intelligence Dashboard</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Chart.js CDN with fallback -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script> <!-- Specific version for consistency -->
+  <script>
+    if (typeof Chart === 'undefined') {
+      document.write('<script src="/static/chart.js"><\/script>');
+    } else {
+      console.log('Chart.js loaded, version:', Chart.version); // Debug to confirm version
+    }
+  </script>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>📊 RetailAI</h2>
+    <ul>
+      <li class="active"><a href="/">Dashboard</a></li>
+      <li><a href="/products">Products</a></li>
+    </ul>    
+  </div>
+
+  <div class="main-content">
+    <header>
+      <h1>Demand Forecast & Inventory Optimizer</h1>
+    </header>
+
+    <div class="grid">
+      <!-- Upload Panel -->
+      <div class="card">
+        <h3>📥 Upload Sales Data</h3>
+        <form id="uploadForm" enctype="multipart/form-data">
+          <input type="file" name="file" accept=".csv" required />
+          <button type="submit">Upload</button>
+        </form>
+        <div id="uploadMessage"></div>
+      </div>
+
+      <!-- Manual Input Panel -->
+      <div class="card">
+        <h3>📝 Enter Product Info</h3>
+        <input type="text" id="product" placeholder="Product Name (e.g., Milk)" required />
+        <input type="text" id="region" placeholder="Region (e.g., North, optional)" />
+        <button onclick="submitData()">Analyze</button>
+      </div>
+
+      <!-- Forecast Output -->
+      <div class="class="card wide">
+        <h3>📈 Demand Forecast (7 Days)</h3>
+        <canvas id="forecastChart" height="200"></canvas> <!-- Increased height -->
+      </div>
+
+      <!-- Inventory Status -->
+      <div class="card">
+        <h3>📦 Inventory Status</h3>
+        <div id="inventoryStatus" class="status-box">Waiting for input...</div>
+        <div><strong>Current Stock:</strong> <span id="currentStock"></span></div>
+        <div><strong>Total Demand:</strong> <span id="totalDemand"></span></div>
+      </div>
+
+      <!-- GenAI Output -->
+      <div class="card">
+        <h3>🤖 AI Recommendation</h3>
+        <div id="aiOutput" class="status-box">No suggestions yet.</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
